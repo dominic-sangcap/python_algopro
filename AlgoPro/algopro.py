@@ -19,3 +19,8 @@ class Solution(object):
 
     def isValidBST(self, n):
         return self._isValidBSTHelper(n, float('-inf'), float('inf'))
+
+# Ex. input
+
+
+#Lesson 2
