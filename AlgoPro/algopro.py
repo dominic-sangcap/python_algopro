@@ -22,5 +22,26 @@ class Solution(object):
 
 # Ex. input
 
+from collection import defaultdict
 
 #Lesson 2
+#Ransom Note
+class Solution(object):
+    def canSpell(self, magazine, note):
+        letters = defaultdict(int)
+        #for each char at magazine[index], add 1 to corresponding alphabet in letters
+        for c in magazine:
+            letters[c] += 1
+
+        for c in note:
+            if letters[c] <= 0:
+                return False
+            #decrement from note, on assumption we need to see duplicate letters in magazine
+            letters[c] -= 1
+
+        return True
+
+# Ex. input
+# where, [] is an array of char defining what is available, and second parameter asking what word can be spelled
+# shud be True
+print(Solution().canSpell(['a', 'b', 'c', 'd', 'e', 'f'], 'bed'))
