@@ -47,6 +47,7 @@ class Solution(object):
 print(Solution().canSpell(['a', 'b', 'c', 'd', 'e', 'f'], 'bed'))
 
 #Lesson 3
+#Add two numbers as linked list
 class Node(object):
     def __init__(self, x):
         self.val = x
@@ -80,3 +81,32 @@ class Solution:
             a = a.next
             b = b.next
         return ret
+
+#Lesson 4
+#Two Sum
+class Solution(object):
+    #brute force solution
+    def twoSum(self, nums, target):
+        # must enumertae because of python rules?
+        for i1, a in enumerate(nums):
+            for i2, b in enumerate(nums):
+                if a == b: 
+                    continue
+                if a + b == target:
+                    # i1 & i2 give indeces of value, a & b give numerical values
+                    return[i1, i2]
+        return []
+    
+    #hashmap solution
+    def twoSumHmap(self, nums, target):
+        values = {}
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in values:
+                return [i, values[diff]]
+            values[num] = i
+        return []
+
+#test input
+print(Solution().twoSumHmap([1, 2, 5, 12], 14))
+print(Solution().twoSum([1, 2, 5, 12], 14))
