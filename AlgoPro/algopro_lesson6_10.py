@@ -59,3 +59,21 @@ def sortNums2(nums):
 #test input
 print(sortNums2([3, 3, 2, 1, 1, 2, 3, 2, 1]))
 print(sortNums([3, 3, 2, 1, 1, 2, 3, 2, 1]))
+
+#Lesson 8
+#Queue Height Reconstruction
+class Solution:
+    def reconstructionQueue(self, input):
+        #sorts into [[7, 0], [7, 1], [6, 1], [5, 0], [5, 2], [4, 4]], the 'in front of value'
+        input.sort(key= lambda x:
+            (-x[0], x[1])
+            )
+        res = []
+        #sorts into [[5, 0], [7, 0], [5, 2], [6, 1], [4, 4], [7, 1]], 'height' in conjuncture with 'in front of value'
+        for person in input:
+            res.insert(person[1], person)
+        return res
+
+# Test input
+input = [[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]]
+print(Solution().reconstructionQueue(input))
