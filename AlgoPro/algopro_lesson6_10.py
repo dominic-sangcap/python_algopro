@@ -77,3 +77,27 @@ class Solution:
 # Test input
 input = [[7, 0], [4, 4], [7, 1], [5, 0], [6, 1], [5, 2]]
 print(Solution().reconstructionQueue(input))
+
+#Lesson 9
+#Find non-duplicate
+class Solution(object):
+    #hashmap variation
+    def singleNumber(self, nums):
+        occurence = {}
+
+        for n in nums:
+            occurence[n] = occurence.get(n, 0) + 1
+        for key, value in occurence.items():
+            if value == 1:
+                return key
+
+    #xor variation
+    def singleNumber2(self, nums):
+        unique = 0
+        for n in nums:
+            unique ^= n
+        return unique
+
+#test input
+print(Solution().singleNumber2([4, 3, 2, 4, 1, 3, 2]))
+print(Solution().singleNumber([4, 3, 2, 4, 1, 3, 2]))
