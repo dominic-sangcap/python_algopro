@@ -101,3 +101,32 @@ class Solution(object):
 #test input
 print(Solution().singleNumber2([4, 3, 2, 4, 1, 3, 2]))
 print(Solution().singleNumber([4, 3, 2, 4, 1, 3, 2]))
+
+#Lesson 10
+#Reverse linked-list
+class Node(object):
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+
+    def __repr__(self):
+        res = str(self.val)
+        if self.next:
+            res += str(self.next)
+        return res
+
+class Solution(object):
+    def reverse(self, node):
+        curr = node
+        prev = None
+        while curr != None:
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+        return prev
+
+#test input
+node = Node(1, Node(2, Node(3, Node(4, Node(5)))))
+#shud print 54321
+print(Solution().reverse(node))
