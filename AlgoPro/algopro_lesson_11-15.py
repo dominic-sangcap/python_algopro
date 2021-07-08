@@ -76,3 +76,27 @@ class Solution:
 print(Solution().canFinish(2, [[1, 0]]))
 print(Solution().canFinish(2, [[1, 0], [0, 1]]))
 
+#Lesson 13
+#Find Pythagorean Triplets
+#brute force algorithm
+def findPythagTriplets(nums):
+    for a in nums:
+        for b in nums:
+            for c  in nums:
+                if a*a + b*b == c*c:
+                    return True
+    return False
+#hashmap variation
+def findPythagTriplets2(nums):
+    squares = set([n*n for n in nums])
+
+    for a in nums:
+        for b in nums:
+            if a*a + b*b in squares:
+                    return True
+    return False
+#test input
+print(findPythagTriplets([3, 5, 12, 5, 13]))
+print(findPythagTriplets2([3, 5, 12, 5, 13]))
+
+
