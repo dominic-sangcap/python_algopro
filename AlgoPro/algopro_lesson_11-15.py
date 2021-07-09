@@ -99,4 +99,46 @@ def findPythagTriplets2(nums):
 print(findPythagTriplets([3, 5, 12, 5, 13]))
 print(findPythagTriplets2([3, 5, 12, 5, 13]))
 
+#Lesson 14
+#Falling dominoes
+#structure is baed on representation of dominoes
+class Solution(object):
+    def pushDominoes(self, dominoes):
+        forces = [0] * len(dominoes)
+        max_force = len(dominoes)
+        force = 0
+        #first pass left to right
+        for i, d in enumerate(dominoes):
+            if d == 'R':
+                force = max_force
+            if d == 'L':
+                force = 0
+            else:
+                force = max(0, force - 1)
+            forces[i] = force
+        #print(forces)
+
+        #second pass right to left
+        for i in range(len(dominoes) - 1, -1, -1):
+            d = dominoes[i]
+            if d == 'L':
+                force = max_force
+            if d == 'R':
+                force = 0
+            else:
+                force = max(0, force - 1)
+            forces[i] -= force
+        #print(forces)
+
+        result = ''
+        for f in forces:
+            if f == 0:
+                result += '.'
+            elif f > 0:
+                result += 'R'
+            else:
+                result += 'L'
+        return result
+#test input
+print(Solution().pushDominoes('..R...L..R.'))
 
