@@ -78,3 +78,29 @@ matrix = [
     ['M', 'A', 'S', 'S']]
 print(Grid(matrix).wordSearch('FOAM'))
 print(Grid(matrix).wordSearch('MASS'))
+
+
+#lesson 19
+#top k frequent items
+
+import heapq
+import collections
+
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        count = collections.defaultdict(int)
+        for n in nums:
+            count[n] += 1
+
+        heap = []
+        for num, c in count.items():
+            #use - since heap store min, store max count as negative number
+            heap.append((-c, num))
+        heapq.heapify(heap)
+        print(heap)
+
+        result = []
+        for i in range(k):
+            result.append(heapq.heappop(heap)[1])
+        return result
+print(Solution().topKFrequent([1,1,1,2,2,3,], 2))
