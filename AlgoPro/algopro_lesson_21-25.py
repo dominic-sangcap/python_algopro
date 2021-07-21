@@ -192,7 +192,7 @@ grid = [[1,  2,  3,  4,  5],
 # TypeError: 'NoneType' object is not subscriptable
 print(Grid(grid).spiralPrint())
 
-#lesson 24
+#lesson 25
 #Unique Paths
 class Solution(object):
     def uniquePaths(self, m, n):
