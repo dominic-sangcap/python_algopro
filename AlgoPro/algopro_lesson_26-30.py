@@ -148,6 +148,38 @@ class Solution(object):
     def genParens(self, n):
         return self._genParensHelper(n, 0, 0, '')
         return []
-        
+
 #test input
 print(Solution().genParens(3))
+
+#Lesson 30
+#depth of binary tree
+class Node(object):
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+    def __repr__(self):
+        return self.val
+    
+def deepest(node):
+    if not node:
+        return 0
+    return 1 + max(deepest(node.left), deepest(node.right))
+
+#    a
+#   / \
+#  b   c
+# /
+# d
+#  \
+#   e
+#test input
+root = Node('a')
+root.left = Node('b')
+root.left.left = Node('d')
+root.left.left.right = Node('e')
+root.right = Node('c')
+
+print(deepest(root))
