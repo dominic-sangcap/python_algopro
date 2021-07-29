@@ -78,3 +78,51 @@ def meeting_rooms(meetings):
 print(meeting_rooms([[0, 10], [10, 20]]))
 
 print(meeting_rooms([[20, 30], [10, 21], [0, 50]]))
+
+#Lesson 34
+#Sort Colors
+from collections import defaultdict
+
+class Solution(object):
+    #hashmap implementation
+    def sortColors(self, colors):
+        colorsMap = defaultdict(int)
+        for c in colors:
+            colorsMap[c] += 1
+
+        index = 0
+        for i in range(colorsMap[0]):
+            colors[index] = 0
+            index += 1
+        for i in range(colorsMap[1]):
+            colors[index] = 1
+            index += 1
+        for i in range(colorsMap[2]):
+            colors[index] = 2
+            index += 1
+
+    #indeces sort
+    def sortColors2(self, colors):
+        lowIndex = 0
+        highIndex = len(colors) - 1
+        currIndex = 0
+
+        while currIndex <= highIndex:
+            if colors[currIndex] == 0:
+                colors[lowIndex], colors[currIndex] = colors[currIndex], colors[lowIndex]
+                lowIndex += 1
+                currIndex += 1
+            elif colors[currIndex] == 2:
+                colors[highIndex], colors[currIndex] = colors[currIndex], colors[highIndex]
+                highIndex -= 1
+            else:
+                currIndex += 1
+
+#test input
+colors = [0, 2, 1, 0, 1, 1, 2]
+Solution().sortColors(colors)
+print(colors)
+
+colors = [0, 2, 1, 0, 1, 1, 2]
+Solution().sortColors2(colors)
+print(colors)
