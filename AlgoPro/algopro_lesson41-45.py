@@ -19,3 +19,27 @@ class Solution(object):
         return minLen
 #test input
 print(Solution().minSubArray(7, [2, 3, 1, 2, 4, 3]))
+
+#Lesson 42
+#Merge List of Number Into Ranges
+def makeRange(low, high):
+    return str(low) + '-' + str(high)
+
+def findRanges(nums):
+    if not nums:
+        return []
+
+    ranges = []
+    low = nums[0]
+    high = nums[0]
+
+    for n in nums:
+        if high + 1 < n:
+            ranges.append(makeRange(low, high))
+            low = n
+        high = n
+    ranges.append(makeRange(low, high))
+    return ranges
+
+#test input
+print(findRanges([0, 1, 2, 5, 7, 8, 9, 10, 11, 15]))
