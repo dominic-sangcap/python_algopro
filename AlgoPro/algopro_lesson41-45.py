@@ -43,3 +43,20 @@ def findRanges(nums):
 
 #test input
 print(findRanges([0, 1, 2, 5, 7, 8, 9, 10, 11, 15]))
+
+#Lesson 43
+#Max Subarray
+class Solution(object):
+    def maxSubArray(self, nums):
+        maxSum = 0
+        sum = 0
+        for n in nums:
+            sum += n
+            if sum < 0: 
+                sum = 0
+            else:
+                maxSum = max(maxSum, sum)
+        return maxSum
+
+#test input
+print(Solution().maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
