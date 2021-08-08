@@ -60,3 +60,36 @@ class Solution(object):
 
 #test input
 print(Solution().maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]))
+
+#Lesson 44
+#Array Intersection
+class Solution(object):
+    #brute force
+    def intersection(self, nums1, nums2):
+        results = {}
+        for num in nums1:
+            if num in nums2 and num not in results:
+                results[num] = 1
+        return list(results.keys())
+
+    #built in functions, w/ sets
+    def intersection2(self, nums1, nums2):
+        set1 = set(nums1)
+        set2 = set(nums2)
+        return [x for x in set1 if x in set2]
+
+    #double hashmap implementations
+    def intersection3(self, nums1, nums2):
+        hash = {}
+        duplicates = {}
+        for i in nums1:
+            hash[i] = 1
+        for i in nums2:
+            if i in hash:
+                duplicates[i] = 1
+
+        #tuple returns (), no tuple returns []
+        return tuple(duplicates.keys())
+
+#test input
+print(Solution().intersection3([4, 9, 5], [9, 4, 9, 8, 4]))
