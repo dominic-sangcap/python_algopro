@@ -88,3 +88,25 @@ tree.right.right = Node(7)
 string = serialize(tree)
 print(string)
 print(deserialize(string))
+
+#Lesson 49
+#Longest Substring without repeating characters
+def lengthOfLongestSubstring(str):
+    letter_pos = {}
+    start = -1
+    end = 0
+    max_length = 0
+
+    while end < len(str):
+        c = str[end]
+        if c in letter_pos:
+            start = max(start, letter_pos[c])
+        max_length = max(max_length, end - start)
+
+        letter_pos[c] = end
+        end += 1
+
+    return max_length
+
+#test input
+print(lengthOfLongestSubstring('aabcbbeacc'))
