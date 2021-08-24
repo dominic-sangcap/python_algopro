@@ -164,3 +164,23 @@ class Solution:
 s = Solution()
 s.build(['dog', 'dark', 'cat', 'door', 'dodge'])
 print(s.autocomplete('do'))
+
+#lesson 60
+#fibonacci number
+def fib(n):
+    a = 0
+    b = 1
+    if n == 0:
+        return a
+    if n == 1:
+        return b
+    
+    for _ in range(2, n + 1):
+        value = a + b
+        a = b
+        b = value
+    return value
+
+#test input
+print(fib(6))
+print(fib(10))
