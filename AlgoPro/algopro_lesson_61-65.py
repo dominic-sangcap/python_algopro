@@ -55,3 +55,22 @@ def find_continuous_k(list, k):
 
 #test input
 print(find_continuous_k([1, 3, 2, 5, 7, 2], 14))
+
+#Lesson 63
+##Absolute Paths
+def clean_path(path):
+    folders = path.split('/')
+    stack = []
+
+    for folder in folders:
+        if folder == '.':
+            pass
+        elif folder == '..':
+            stack.pop()
+        else:
+            stack.append(folder)
+    return'/'.join(stack)
+
+#test input
+path = '/users/tech/docs/.././desk/../'
+print(clean_path(path))
