@@ -95,3 +95,35 @@ def longest_run(n):
 #test input
 n = 242
 print(longest_run(n))
+
+#Lesson 65
+#Anagrams in a String
+from collections import defaultdict
+
+def find_anagrams(a, b):
+    char_map = defaultdict(int)
+
+    for c in b:
+        char_map[c] += 1
+
+    results = []
+    for i in range(len(a)):
+        c = a[i]
+
+        if i >= len(b):
+            c_old = a[i-len(b)]
+            char_map[c_old] += 1
+            if char_map[c_old] == 0:
+                del char_map[c_old]
+
+        char_map[c] -= 1
+        if char_map[c] == 0:
+            del char_map[c]
+
+        if i + 1 >= len(b) and len(char_map) == 0:
+            results.append(i - len(b) + 1)
+
+    return results
+
+#test input
+print(find_anagrams('acdbacdacb', 'abc'))
