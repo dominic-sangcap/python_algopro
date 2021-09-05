@@ -106,6 +106,7 @@ print(find_subtree2(n, b))
 #Determine if Number
 
 from enum import Enum
+
 class DigitState(Enum):
     BEGIN = 0
     NEGATIVE1 = 1
@@ -155,3 +156,17 @@ def parse_number(str):
 print(parse_number('12.3'))
 
 print(parse_number('12a'))
+
+#Lesson 70
+#First Recurring Character
+def first_recurring_char(str):
+    seen = set()
+
+    for c in str:
+        if c in seen:
+            return c
+        seen.add(c)
+
+    return None
+#test input
+print(first_recurring_char('qwertty'))
