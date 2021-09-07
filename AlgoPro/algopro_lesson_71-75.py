@@ -53,3 +53,41 @@ print(in_order_successor(tree.right))
 print(in_order_successor(tree.left))
 
 print(in_order_successor(tree.right.left.right))
+
+
+#Lesson 72
+#Rotator Linked List
+class Node:
+  def __init__(self, value, next=None):
+    self.value = value
+    self.next= next
+
+  def __repr__(self):
+    return f"({self.value}, {self.next})"
+
+def rotate(node, n):
+  length = 0
+  curr = node
+  while curr != None:
+    curr = curr.next
+    length += 1
+  n = n % length
+
+  slow, fast = node, node
+  for i in range(n):
+    fast = fast.next
+
+  while fast.next != None:
+    slow = slow.next
+    fast = fast.next
+  
+  fast.next = node
+  head = slow.next
+  slow.next = None
+
+  return head
+
+#test input
+node = Node(1, Node(2, Node(3, Node(4, Node(5)))))
+
+print(rotate(node, 2))
