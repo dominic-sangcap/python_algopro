@@ -115,3 +115,20 @@ def remove_duplicates(node):
 node = Node(1, Node(2, Node(2, Node(3, Node(3)))))
 remove_duplicates(node)
 print(node)
+
+
+#Lesson 74
+class ListFastSum(object):
+  def __init__(self, nums):
+    self.pre = [0]
+
+    sum = 0
+    for num in nums:
+      sum += num
+      self.pre.append(sum)
+
+  def sum(self, starts, end):
+    return self.pre[end] - self.pre[starts]
+
+#test input
+print(ListFastSum([1, 2, 3, 4, 5, 6, 7]).sum(2, 5))
