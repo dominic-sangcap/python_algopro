@@ -132,3 +132,55 @@ class ListFastSum(object):
 
 #test input
 print(ListFastSum([1, 2, 3, 4, 5, 6, 7]).sum(2, 5))
+
+
+#lesson 75
+#Sorted square numbers
+def square_numbers(nums):
+  neg_i = -1
+  i = 0
+
+  result = []
+  for n in nums:
+    if n >= 0:
+      if neg_i == -1:
+        neg_i = i - 1
+
+      while neg_i >= 0 and nums[neg_i] < 0 and -nums[neg_i] < nums[i]:
+        val = nums[neg_i]
+        result.append(val * val)
+        neg_i -= 1
+
+      val = nums[i]
+      result.append(val * val)
+    i += 1
+
+  while neg_i >= 0 and nums[neg_i] < 0:
+    val = nums[neg_i]
+    result.append(val * val)
+    neg_i -= 1
+
+  return result
+
+def square_numbers2(nums):
+  result = []
+  front = 0
+  back = -1
+
+  while nums[back] > nums[front]:
+    if abs(nums[front]) > nums[back]:
+      result.insert(0, nums[front]**2)
+      #print(nums[front]**2, 'front')
+      front += 1
+    else:
+      result.insert(0, nums[back]**2)
+      #print(nums[back]**2, 'back')
+      back -= 1
+
+  result.insert(0, nums[front]**2)
+  
+  return result
+
+#test input
+print(square_numbers2([-5, -3, -1, 0, 1, 4, 5]))
+print(square_numbers([-5, -3, -1, 0, 1, 4, 5]))
