@@ -65,3 +65,18 @@ def shortest_unique_prefix(words):
 
 #test input
 print(shortest_unique_prefix(['jon', 'john', 'jack', 'tech']))
+
+#Lesson 78
+#Make Largest NUmber
+from functools import cmp_to_key
+
+def largestNum(nums):
+  sorted_nums = sorted(nums, 
+  key=cmp_to_key(lambda a, b:
+      1 if str(a) + str(b) < str(b) + str(a)
+      else -1)
+  )
+  return ''.join(str(n) for n in sorted_nums)
+
+#test input
+print(largestNum([17, 7, 2, 45, 72]))
